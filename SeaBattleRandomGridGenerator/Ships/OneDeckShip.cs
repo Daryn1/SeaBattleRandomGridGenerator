@@ -1,6 +1,6 @@
 ﻿namespace SeaBattleRandomGridGenerator.Ships
 {
-    class OneDeckShip : Ship
+    public class OneDeckShip : Ship
     {
         public OneDeckShip()
         {

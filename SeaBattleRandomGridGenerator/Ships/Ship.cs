@@ -1,6 +1,6 @@
 ﻿namespace SeaBattleRandomGridGenerator.Ships
 {
-    abstract class Ship
+    public abstract class Ship
     {
         public int Size { get; set; }
 

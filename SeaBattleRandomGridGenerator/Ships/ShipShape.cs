@@ -1,6 +1,6 @@
 ﻿namespace SeaBattleRandomGridGenerator.Ships
 {
-    enum ShipShape
+    public enum ShipShape
     {
         Line,
         LShaped,

@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using SeaBattleRandomGridGenerator.Interfaces;
 using SeaBattleRandomGridGenerator.Ships;
 
 namespace SeaBattleRandomGridGenerator
 {
-    class ShipBuilder
+    public class ShipBuilder : IShipBuilder
     {
         public List<Cell> Build(Ship ship)
         {
@@ -64,7 +65,7 @@ namespace SeaBattleRandomGridGenerator
             return relativeShipCells;
         }
 
-        public Cell RotateCell(ShipRotation rotation, Cell cell)
+        private Cell RotateCell(ShipRotation rotation, Cell cell)
         {
             var rotatedCell = new Cell(0, 0);
 

@@ -1,6 +1,6 @@
 ﻿namespace SeaBattleRandomGridGenerator.Ships
 {
-    enum ShipRotation
+    public enum ShipRotation
     {
         _0,
         _90,

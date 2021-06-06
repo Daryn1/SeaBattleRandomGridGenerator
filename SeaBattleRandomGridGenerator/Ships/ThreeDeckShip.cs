@@ -1,6 +1,6 @@
 ﻿namespace SeaBattleRandomGridGenerator.Ships
 {
-    class ThreeDeckShip : Ship
+    public class ThreeDeckShip : Ship
     {
         public ThreeDeckShip(ShipShape shape, ShipRotation shipRotation)
         {

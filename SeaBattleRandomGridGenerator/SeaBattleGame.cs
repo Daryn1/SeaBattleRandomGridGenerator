@@ -1,37 +1,35 @@
 ﻿using System.Collections.Generic;
+using SeaBattleRandomGridGenerator.Interfaces;
 using SeaBattleRandomGridGenerator.Ships;
 
 namespace SeaBattleRandomGridGenerator
 {
-    class SeaBattleGame
+    public class SeaBattleGame
     {
-        public bool[][] Grid { get; set; } = new bool[GridSize][];
+        public bool[][] Grid { get; set; }
 
-        private const int GridSize = 10;
+        private IShipGenerator randomShipGenerator;
 
-        private RandomShipGenerator randomShipGenerator = new RandomShipGenerator();
-
-        private ShipPlacer shipPlacer = new ShipPlacer();
+        private IShipPlacer shipPlacer;
 
         private List<Ship> ships;
 
-        public SeaBattleGame()
+        public SeaBattleGame(IShipGenerator randomShipGenerator, IShipPlacer shipPlacer)
         {
+            this.randomShipGenerator = randomShipGenerator;
+            this.shipPlacer = shipPlacer;
             ResetGrid();
         }
 
         public void ResetGrid()
         {
-            for (var i = 0; i < GridSize; ++i)
-            {
-                Grid[i] = new bool[] { false, false, false, false, false, false, false, false, false, false };
-            }
+            Grid = EmptyGridGenerator.GenerateEmptyGridOfSize(Constants.GridSize);
         }
 
         public void GenerateRandomGrid()
         {
             ResetGrid();
-            ships = GenerateRandomShips();
+            ships = Generate10RandomShips();
 
             foreach (var ship in ships)
             {
@@ -39,23 +37,23 @@ namespace SeaBattleRandomGridGenerator
             }
         }
 
-        private List<Ship> GenerateRandomShips()
+        private List<Ship> Generate10RandomShips()
         {
             return new List<Ship>
             {
-                randomShipGenerator.Generate(shipSize:4),
+                randomShipGenerator.GenerateShipOfSize(shipSize:4),
 
-                randomShipGenerator.Generate(shipSize:3),
-                randomShipGenerator.Generate(shipSize:3),
+                randomShipGenerator.GenerateShipOfSize(shipSize:3),
+                randomShipGenerator.GenerateShipOfSize(shipSize:3),
 
-                randomShipGenerator.Generate(shipSize:2),
-                randomShipGenerator.Generate(shipSize:2),
-                randomShipGenerator.Generate(shipSize:2),
+                randomShipGenerator.GenerateShipOfSize(shipSize:2),
+                randomShipGenerator.GenerateShipOfSize(shipSize:2),
+                randomShipGenerator.GenerateShipOfSize(shipSize:2),
 
-                randomShipGenerator.Generate(shipSize:1),
-                randomShipGenerator.Generate(shipSize:1),
-                randomShipGenerator.Generate(shipSize:1),
-                randomShipGenerator.Generate(shipSize:1)
+                randomShipGenerator.GenerateShipOfSize(shipSize:1),
+                randomShipGenerator.GenerateShipOfSize(shipSize:1),
+                randomShipGenerator.GenerateShipOfSize(shipSize:1),
+                randomShipGenerator.GenerateShipOfSize(shipSize:1)
             };
         }
     }

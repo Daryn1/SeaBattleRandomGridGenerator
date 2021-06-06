@@ -2,7 +2,7 @@
 
 namespace SeaBattleRandomGridGenerator
 {
-    class GridDrawer
+    public class GridDrawer
     {
         public void Draw(bool[][] grid)
         {

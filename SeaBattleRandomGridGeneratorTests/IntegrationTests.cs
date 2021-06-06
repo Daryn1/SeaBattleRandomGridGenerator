@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Linq;
+using NUnit.Framework;
 
 namespace SeaBattleRandomGridGenerator
 {
-    static class Tests
+    [TestFixture]
+    static class IntegrationTests
     {
+        [Test]
         public static void TestShipBuilding()
         {
             var shipBuilder = new ShipBuilder();
-            var randomShipGenerator = new RandomShipGenerator();
-            var ship = randomShipGenerator.Generate(shipSize:4);
+            var randomShipGenerator = new RandomShipGenerator(new RandomGenerator());
+            var ship = randomShipGenerator.GenerateShipOfSize(shipSize:4);
             var startingCell = new Cell(3, 3);
             var relativeShipCells = shipBuilder.Build(ship);
             var absoluteShipCells = relativeShipCells
